@@ -17,6 +17,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowsUpDownLeftRight,
   faMagnifyingGlassPlus,
+  faCodeCommit,
+  faCodeFork,
+  faDeleteLeft,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import ToolButton from "../../components/ToolButton";
 const node_refs = new Set();
@@ -164,7 +168,7 @@ const Mindmap = ({ container_ref }) => {
             fontSize: "20px",
           }}
         >
-          Alt + Left Mouse or Middle mouse to move freely
+          "Alt + Left Mouse" or "Middle mouse" to move freely
           <FontAwesomeIcon
             icon={faArrowsUpDownLeftRight}
             style={{
@@ -178,6 +182,7 @@ const Mindmap = ({ container_ref }) => {
         </h6>
         <h6
           style={{
+            marginBottom: "auto",
             marginTop: "auto",
             justifyContent: "center",
             alignItems: "center",
@@ -185,9 +190,97 @@ const Mindmap = ({ container_ref }) => {
             fontSize: "20px",
           }}
         >
-          Ctrl + Scroll to zoom
+          "Ctrl + Scroll" to zoom
           <FontAwesomeIcon
             icon={faMagnifyingGlassPlus}
+            style={{
+              fontSize: "22px",
+              marginLeft: "5px",
+              alignItems: "center",
+              verticalAlign: "middle",
+              opacity: eye ? 0.45 : 0,
+            }}
+          ></FontAwesomeIcon>
+        </h6>
+        <h6
+          style={{
+            marginBottom: "auto",
+            marginTop: "auto",
+            justifyContent: "center",
+            alignItems: "center",
+            opacity: eye ? 0.45 : 0,
+            fontSize: "20px",
+          }}
+        >
+          "Tab" to add child node
+          <FontAwesomeIcon
+            icon={faCodeCommit}
+            style={{
+              fontSize: "22px",
+              marginLeft: "5px",
+              alignItems: "center",
+              verticalAlign: "middle",
+              opacity: eye ? 0.45 : 0,
+            }}
+          ></FontAwesomeIcon>
+        </h6>
+        <h6
+          style={{
+            marginBottom: "auto",
+            marginTop: "auto",
+            justifyContent: "center",
+            alignItems: "center",
+            opacity: eye ? 0.45 : 0,
+            fontSize: "20px",
+          }}
+        >
+          "Enter" to add sibiling node
+          <FontAwesomeIcon
+            icon={faCodeFork}
+            style={{
+              fontSize: "22px",
+              marginLeft: "5px",
+              alignItems: "center",
+              verticalAlign: "middle",
+              opacity: eye ? 0.45 : 0,
+            }}
+          ></FontAwesomeIcon>
+        </h6>
+        <h6
+          style={{
+            marginBottom: "auto",
+            marginTop: "auto",
+            justifyContent: "center",
+            alignItems: "center",
+            opacity: eye ? 0.45 : 0,
+            fontSize: "20px",
+          }}
+        >
+          "Delete button" to delete node
+          <FontAwesomeIcon
+            icon={faDeleteLeft}
+            style={{
+              fontSize: "22px",
+              marginLeft: "5px",
+              alignItems: "center",
+              verticalAlign: "middle",
+              opacity: eye ? 0.45 : 0,
+            }}
+          ></FontAwesomeIcon>
+        </h6>
+        <h6
+          style={{
+            marginBottom: "auto",
+            marginTop: "auto",
+            justifyContent: "center",
+            alignItems: "center",
+            opacity: eye ? 0.45 : 0,
+            fontSize: "20px",
+          }}
+        >
+          "Ctrl + F" to Search
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
             style={{
               fontSize: "22px",
               marginLeft: "5px",
@@ -202,7 +295,7 @@ const Mindmap = ({ container_ref }) => {
             fontSize: "40px",
             verticalAlign: "middle",
             position: "absolute",
-            top: "50px",
+            top: "80px",
             left: "-70px",
             zIndex: "1",
           }}
