@@ -30,6 +30,13 @@ const Export = ({ handleClosePopup, displayMan, setDisplayMan }) => {
     });
   };
 
+  const handleDownload = () => {
+    const url = `data:text/plain,${encodeURIComponent(
+      JSON.stringify(mindmap)
+    )}`;
+    downloadFile(url, `${title}.json`);
+  };
+
   const handleExportText = (format) => {
     const data = mindmapExporter(mindmap, format);
     let url = `data:text/plain,${encodeURIComponent(data)}`;
@@ -133,6 +140,14 @@ const Export = ({ handleClosePopup, displayMan, setDisplayMan }) => {
             >
               <i className={"zwicon-file-font"} />
               Text file（.txt）
+            </li>
+            <li
+              onClick={() => {
+                handleDownload();
+              }}
+            >
+              <i className={"zwicon-file-export"} />
+              JSON File（.json）
             </li>
           </ul>
           <ButtonSet>
