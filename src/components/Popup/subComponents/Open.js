@@ -43,6 +43,8 @@ const Open = ({ handleClosePopup, handleDownload }) => {
         } else {
           alert("Invalid mind map file");
         }
+        localStorage.removeItem("checkedState");
+        localStorage.removeItem("disableState");
       };
       file_reader.readAsText(file);
     });

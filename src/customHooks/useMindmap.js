@@ -11,6 +11,12 @@ const useMindmap = () => {
     nodeStatus: { dispatch: nDispatch },
     history: { dispatch: hDispatch },
   } = useContext(context);
+
+  const clearLocalStorage = () => {
+    localStorage.removeItem("checkedState");
+    localStorage.removeItem("disableState");
+  };
+
   return {
     toggleChildren: (node_id, bool) => {
       mDispatch(mindmapAction.toggleChildren(node_id, bool));
@@ -20,17 +26,20 @@ const useMindmap = () => {
       mDispatch(mindmapAction.toggleChildren(node_id, true));
       mDispatch(mindmapAction.addChild(node_id, new_node_id));
       nDispatch(nodeStatusAction.setEdit(new_node_id));
+      clearLocalStorage();
     },
     addSibling: (node_id, parent_id) => {
       const new_node_id = md5("" + Date.now() + Math.random());
       mDispatch(mindmapAction.addSibling(node_id, parent_id, new_node_id));
       nDispatch(nodeStatusAction.setEdit(new_node_id));
+      clearLocalStorage();
     },
     moveNode: (node_id, target_id, parent_id, is_sibling) => {
       mDispatch(
         mindmapAction.moveNode(node_id, target_id, parent_id, is_sibling)
       );
       nDispatch(nodeStatusAction.setSelect(node_id));
+      clearLocalStorage();
     },
     editNode: (node_id) => {
       nDispatch(nodeStatusAction.setEdit(node_id));
@@ -47,6 +56,7 @@ const useMindmap = () => {
     deleteNode: (node_id, parent_id) => {
       mDispatch(mindmapAction.deleteNode(node_id, parent_id));
       nDispatch(nodeStatusAction.setSelect(parent_id));
+      clearLocalStorage();
     },
     clearNodeStatus: () => {
       nDispatch(nodeStatusAction.clearAll());

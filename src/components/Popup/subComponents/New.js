@@ -22,6 +22,8 @@ const New = ({ handleClosePopup, handleDownload }) => {
     setMindmap(defaultMindmap, true);
     dispatch(setTitle(refer.DEFAULT_TITLE));
     handleClosePopup();
+    localStorage.removeItem("checkedState");
+    localStorage.removeItem("disableState");
   };
 
   return (

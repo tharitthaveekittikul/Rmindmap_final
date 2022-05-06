@@ -71,10 +71,28 @@ const ManualExport = ({ handleClosePopup }) => {
     list.forEach((e) => {
       idlist.push(e.id);
     });
-    setCheckedState(new Array(list.length).fill(true));
-    setDisableState(new Array(list.length).fill(false));
+    //call the localStorage for get State
+    console.log(localStorage.getItem("checkedState"));
+    console.log(localStorage.getItem("disableState"));
+    if (
+      localStorage.getItem("checkedState") &&
+      localStorage.getItem("disableState")
+    ) {
+      setCheckedState(JSON.parse(localStorage.getItem("checkedState")));
+      setDisableState(JSON.parse(localStorage.getItem("disableState")));
+    } else {
+      setCheckedState(new Array(list.length).fill(true));
+      setDisableState(new Array(list.length).fill(false));
+    }
     setIdCheck(idlist);
   }, []);
+
+  useEffect(() => {
+    // Keep localStorage for checkState and disableState
+    localStorage.setItem("checkedState", JSON.stringify(checkedState));
+    localStorage.setItem("disableState", JSON.stringify(disableState));
+  }, [checkedState, disableState]);
+
   useEffect(() => {
     onChangeSearchList(refreshSearchList(keyword, mindmap));
     setCursor(0);
